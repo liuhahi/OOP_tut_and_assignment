@@ -1,5 +1,6 @@
+import java.util.Random;
 import java.util.Scanner;
-public class Lab2 {
+public class lab2 {
  public static void main(String[] args)
  {
 	int choice;
@@ -13,10 +14,11 @@ public class Lab2 {
 		System.out.println("5: position of a digit");
 		System.out.println("6: extract all odd digits");
 		System.out.println("7: quit");
+		//System.out.println("8: five numbers test8" +"");
 		choice = sc.nextInt();
 		switch (choice) {
 		 case 1: /* add mulTest() call */
-			 mulTest();
+			 fivemultiTest();
 		 break;
 		 case 2: /* add divide() call */
 			 divide();
@@ -34,10 +36,31 @@ public class Lab2 {
 			 extractOddDigits();
 		 break; 
 		 case 7: System.out.println("Program terminating ….");
+		 break;
+		 case 8: 
+			 fivemultiTest();
+	      break;
 		}
 	} while (choice < 7);
 	 }
  /* add method code here */
+ public static void fivemultiTest()
+ {
+	 int counter=0;
+	for(int i=0;i<5;i++)
+	{
+		Random randomGenerator = new Random();
+		int num1 = randomGenerator.nextInt(10);
+		int num2 = randomGenerator.nextInt(10);
+		System.out.println("How much is "+num1+" times "+num2+" ?");
+		Scanner sc = new Scanner(System.in);
+		if(sc.nextInt()==(num1*num2))
+		{
+			counter++;
+		}		
+	}
+	System.out.println(counter+" out of 5 correct!");
+ }
  public static void mulTest()
  {
 	 Scanner sc = new Scanner(System.in);
@@ -54,9 +77,9 @@ public class Lab2 {
 	 Scanner sc = new Scanner(System.in);
 	 int num1,num2,result=0;
 	 System.out.println("Input 2 numbers:");
-	 System.out.println("numberator:");
+	 System.out.println("m = :");
 	 num1 = sc.nextInt();
-	 System.out.println("demoninator:");
+	 System.out.println("n = :");
 	 num2 = sc.nextInt();
 	 while(num1>num2)
 	 {
@@ -84,20 +107,26 @@ public class Lab2 {
  {
 	 Scanner sc = new Scanner(System.in);
 	 int num,result=1;
-	 System.out.println("Input 1 numbers:");
+	 System.out.println("Input 1 numbers:");	 
 	 num = sc.nextInt();
-	 while(num/10!=0)
+	 if(num<0)
 	 {
-		 num=num/10;
-		 result+=1;
+		 System.out.println("error input!");
+		
+	 }else{
+		 while(num/10!=0)
+		 {
+			 num=num/10;
+			 result+=1;
+		 }
+		 System.out.println("result is:"+result);
 	 }
-	 System.out.println("result is:"+result);
-
  }
 
 
  public static void position()
  {
+	 boolean flag = true;
 	 Scanner sc = new Scanner(System.in);
 	 int num1,num2,remainder=0,counter=0;
 	 System.out.println("Input 2 numbers:");
@@ -109,13 +138,16 @@ public class Lab2 {
 	 {
 		 counter++;
 		 remainder = num1 % 10;
-		 System.out.println("remainder is:"+remainder);
+		 //System.out.println("remainder is:"+remainder);
 		 num1 = num1 / 10;
 		 if(remainder == num2)
 		 {
-			 System.out.println("position is:"+counter);			
+			 System.out.println("position is:"+counter);
+			 flag = false;
 		 }
 	 }
+	 if(flag)
+		 System.out.println("position is:-1");
 	 
  }
  public static void extractOddDigits()
@@ -124,6 +156,11 @@ public class Lab2 {
 	 int num,digit,counter=0;
 	 System.out.println("Input a numbers:");
 	 num = sc.nextInt();
+	 if(num<0)
+	 {
+		 System.out.println("error input!");
+		
+	 }else{
 	 System.out.println("odd numbers are: ");
 	 while(num>0)
 	 {
@@ -131,6 +168,7 @@ public class Lab2 {
 		 if(digit%2==1)
 		 System.out.println(digit);
 		 num = num/10;
+	 }
 	 }
  }
  
