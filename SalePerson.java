@@ -27,4 +27,13 @@ public class SalePerson {
 		else
 			return -1;
 	}
+	public String getFirstName(){
+		return this.firstName;
+	}
+	public String getLastName(){
+		return this.firstName;
+	}
+	public int getTotalSales(){
+		return this.totalSales;
+	}
 }
