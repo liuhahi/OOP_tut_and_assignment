@@ -15,5 +15,16 @@ public class SalePerson {
 	public String toString(){
 		return firstName+" "+lastName;
 	}
-	public eq
+	public boolean equals(Object o){
+		return this.equals(o);
+	}
+	public int compareTo(Object o){
+		if(o instanceof SalePerson)
+		{
+			SalePerson sp = (SalePerson)o;
+			return sp.totalSales-this.totalSales;
+		}
+		else
+			return -1;
+	}
 }
